@@ -30,15 +30,20 @@ function render(variables = {}) {
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
   let fullName = `<div class="fullName">${variables.name} ${variables.lastname}</div>`;
   if (variables.name == null)
-    fullName = "<div class ='fullName'>Please enter your name</div>";
+    fullName = "<div class ='fullName'>Your Full Name</div>";
+  let livingIn = `<div class="livingIn">${variables.city}, ${variables.country}</div>`;
+  if (variables.city == null)
+    livingIn = "<div class ='livingIn'>City and Country</div>";
+  let role = `<div class="role">${variables.role}</div>`;
+  if (variables.role == null) role = "<div class ='fullName'>Your Role</div>";
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
           <h1>${fullName}</h1>
-          <h2>${variables.role}</h2>
-          <h3>${variables.city}, ${variables.country}</h3>
+          <h2>${role}</h2>
+          <h3>${livingIn}</h3>
           <ul class=${variables.socialMediaPosition}>
             <li><a href="https://twitter.com/${variables.twitter}"><i class="fa fa-twitter"></i></a></li>
             <li><a href="https://github.com/${variables.github}"><i class="fa fa-github"></i></a></li>
